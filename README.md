@@ -172,8 +172,7 @@ To start the server, follow these steps:
     {
       "product_name": "New Product",
       "product_category": "Electronics",
-      "quantity": 100,
-      "date": "2024-01-31"
+      "quantity": 100
     }
 
 2. **Get a list of products:**
@@ -220,8 +219,7 @@ To start the server, follow these steps:
     Request Body:
     {
       "sku": "your-product-sku",
-      "quantity": 150,
-      "date": "2024-02-01"
+      "quantity": 150
     }
    
 9. **Delete a product:**
