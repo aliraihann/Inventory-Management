@@ -10,7 +10,7 @@ Welcome to the Inventory Management API project! This API is a comprehensive sol
 4. [API Endpoints](#api-endpoints)
 6. [Usage](#usage)
 
-### Key Features:
+## Key Features:
 - User Management: Register new users, manage user roles, and enable user authentication for secure access.
 - Product Operations: Add new products, update product quantities, delete products, and retrieve product information.
 - Authentication: Implement secure authentication using JSON Web Tokens (JWT) for authorized access to protected endpoints.
@@ -29,7 +29,7 @@ Welcome to the Inventory Management API project! This API is a comprehensive sol
 | **Postman**| Tool for testing endpoints.    |
 
 
-### Set up and Installation
+## Set up and Installation
 
 Make sure you have the following installed on your machine:
 
