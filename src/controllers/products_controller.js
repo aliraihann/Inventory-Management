@@ -1,4 +1,4 @@
-import { getItemBySku, orderByCheck,getItemByName, getItemByCat, getAllItem, addItem, deleteItem, updateItemQuantity } from '../models/products_model.js';
+import { getItemBySku, orderByCheck,getItemByName, getItemByCat, getAllItem, checkSpesificItemName, addItem, deleteItem, updateItemQuantity } from '../models/products_model.js';
 
 const inventory = async (req, res) => {
     const { sku, product_name, product_category, order_by, arrangement } = req.body;
@@ -59,9 +59,13 @@ const inventory = async (req, res) => {
 
 const insertItem = async (req, res) => {
     const { product_name, product_category, quantity } = req.body;
-    const date = new Date();
+    const update_by = req.employeeId;
+    const update_at = new Date();
     try {
-        const add = await addItem(product_name, product_category, quantity, date);
+        if (typeof checkSpesificItemName(product_name) !== "undefined") {
+            throw new Error("Item already exist in the Database.")
+        }
+        const add = await addItem(product_name, product_category, quantity, update_at, update_by);
         res.status(200).json({
             message: "Item successfully added to the Database",
             inserted_item: add
@@ -78,13 +82,14 @@ const insertItem = async (req, res) => {
 
 const editQuantity = async (req, res) => {
     const { sku, quantity } = req.body;
-    const date = new Date();
+    const update_by = req.employeeId;
+    const update_at = new Date();
     try {
         const inventoryData = await getItemBySku(sku);
         if (typeof inventoryData === "undefined") {
             res.status(404).send("Incorrect SKU. Please insert the correct code");
         } 
-        const updateQuantity = await updateItemQuantity(quantity, date, sku);
+        const updateQuantity = await updateItemQuantity(quantity, update_at, update_by, sku);
         res.status(200).json({
             message: "Item successfully updated",
             updated_data: updateQuantity

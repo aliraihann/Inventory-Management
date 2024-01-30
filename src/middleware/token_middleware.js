@@ -12,7 +12,6 @@ function getTokenAuthentication (req, res, next) {
     for (const key of generalKey) {
         jwt.verify(headerToken, key, (err, user) => {
           if (!err) {
-            console.log('User is authenticated');
             req.authentication = true;
             isAuthenticated = true;
             return next();
@@ -32,11 +31,13 @@ function updateItemTokenAuthentication (req, res, next) {
 
     jwt.verify(headerToken, process.env.SPV_KEY, (err, user) => {
         if(err) return res.status(401).send('You are not authorized');
-        console.log('user is authenticated');
         req.authentication = true;
+        let decoded = jwt.decode(headerToken, {complete : true});
+        req.employeeId = decoded.payload.employee_id
         next();
     })
 }
+
 
 function updateQuantityTokenAuthentication (req, res, next) {
     const autHeader = req.headers.authorization;
@@ -46,10 +47,11 @@ function updateQuantityTokenAuthentication (req, res, next) {
     for (const key of editQuantityKey) {
         jwt.verify(headerToken, key, (err, user) => {
           if (!err) {
-            console.log('User is authenticated');
             req.authentication = true;
             isAuthenticated = true;
-            return next();
+            let decoded = jwt.decode(headerToken, {complete : true});
+            req.employeeId = decoded.payload.employee_id
+            next();
           }
         });
         if (isAuthenticated) break;

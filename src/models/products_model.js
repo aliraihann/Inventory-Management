@@ -96,12 +96,28 @@ async function getAllItem (order_by, arrangement) {
     }
 }
 
-async function addItem (product_name, product_category, quantity, date) {
+async function checkSpesificItemName (product_name) {
+    try {
+        const [selectItem] = await dbPool.query(`
+        SELECT * FROM products
+        WHERE product_name = ?
+        `, [`${product_name}`]
+        )
+        return selectItem[0];
+    } catch (err) {
+        return({
+            "message": "error on model",
+            "error": `${err.message}`
+        })
+    }
+}
+
+async function addItem (product_name, product_category, quantity, update_at, update_by) {
     try {
         const [insertItem] = await dbPool.query(`
-        INSERT INTO products (product_name, product_category, quantity, date)
-        VALUE (?,?,?,?)
-        `, [product_name, product_category, quantity, date]);
+        INSERT INTO products (product_name, product_category, quantity, update_at, update_by)
+        VALUE (?,?,?,?,?)
+        `, [product_name, product_category, quantity, update_at, update_by]);
     
         const sku = insertItem.insertId;
         return getItemBySku(sku);
@@ -127,14 +143,13 @@ async function deleteItem (sku) {
     }
 }
 
-async function updateItemQuantity ( quantity, date, sku) {
+async function updateItemQuantity ( quantity, update_at, update_by, sku) {
     try {
         const updateQuantity = await dbPool.query(`
         UPDATE products
-        SET quantity = ? , date = ?
+        SET quantity = ? , update_at = ? , update_by = ?
         WHERE sku = ?
-        `, [quantity, date, sku]);
-        
+        `, [quantity, update_at, update_by, sku]);
         return getItemBySku(sku);
     } catch (err) {
         return({
@@ -144,4 +159,4 @@ async function updateItemQuantity ( quantity, date, sku) {
     }
 }
 
-export { getItemBySku, orderByCheck, getItemByCat, getItemByName, getAllItem, addItem, updateItemQuantity, deleteItem }
+export { getItemBySku, orderByCheck, getItemByCat, getItemByName, getAllItem, checkSpesificItemName, addItem, updateItemQuantity, deleteItem }
