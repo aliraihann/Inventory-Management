@@ -5,7 +5,7 @@ Welcome to the Inventory Management API project! This API is a comprehensive sol
 ## Table of Contents
 
 1. [Key Features](#key-features)
-2. [Project Description](#project-description)
+2. [Project Instroduction](#project-instroduction)
 3. [Technologies Used](#technologies-used)
 4. [Setup and Installation](#setup-and-installation)
 5. [Entity Relationship Diagram](#entity-relationship-diagram)
