@@ -9,8 +9,9 @@ Welcome to the Inventory Management API project! This API is a comprehensive sol
 3. [Technologies Used](#technologies-used)
 4. [Setup and Installation](#setup-and-installation)
 5. [Entity Relationship Diagram](#entity-relationship-diagram)
-6. [API Endpoints](#api-endpoints)
-7. [Usage](#usage)
+6. [Project Link](#Project-Link)
+7. [API Endpoints](#api-endpoints)
+8. [Usage](#usage)
 
 ## Key Features:
 - User Management: Register new users, manage user roles, and enable user authentication for secure access.
@@ -32,7 +33,6 @@ This project introduces three user roles: operator, staff, and supervisor, each 
 | **jsonwebtoken**  | Library for generating and verifying JSON Web Tokens used for authentication.              |
 | **bcrypt**        | Library for hashing passwords, enhancing security for user authentication.                |
 | **Postman**| Tool for testing endpoints.    |
-
 
 ## Setup and Installation
 
@@ -77,6 +77,9 @@ Make sure you have the following installed on your machine:
 
 ## Entity Relationship Diagram
 ![ERD of the Database](https://github.com/aliraihann/Inventory-Management/blob/main/ERD%20for%20Inventory%20Management.PNG?raw=true)
+
+## Project Link
+https://railway.app/project/5197003b-4f79-4da3-a0ad-4cdda2fef962/service/08fb184c-acd5-429d-b82a-8a60be077441
 
 ## API Endpoints
 
