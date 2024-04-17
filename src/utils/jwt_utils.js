@@ -14,7 +14,7 @@ const generateToken = async function (employee_id) {
             supervisor: process.env.SPV_KEY,
         };
         const key = roleKeyMap[user.role];
-        const expiresIn = 60 * 30 * 1 ;
+        const expiresIn = "3hr";
         const accessToken = jwt.sign(
             {
             employee_id: user.employee_id, 

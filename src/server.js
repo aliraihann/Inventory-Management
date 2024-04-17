@@ -2,7 +2,7 @@ import express from 'express';
 import { json } from 'express';
 import usersRoutes from './routes/users_route.js';
 import productsRoutes from './routes/products_route.js';
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
 
 dotenv.config()
 const app = express();

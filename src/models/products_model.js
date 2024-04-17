@@ -8,10 +8,7 @@ async function getItemBySku (sku) {
         `, [sku])
         return rows[0];
     } catch (err) {
-        return({
-            "message": "error on model",
-            "error": `${err.message}`
-        })
+        throw new Error(err.message)
     }
 }
 
@@ -31,10 +28,7 @@ async function getItemByCat (product_category, order_by, arrangement) {
         `, [product_category])
         return rows;
     } catch (err) {
-        return({
-            "message": "error on model",
-            "error": `${err.message}`
-        })
+        throw new Error(err.message)
     }
 }
 
@@ -54,24 +48,18 @@ async function getItemByName (product_name, order_by, arrangement) {
         `,[`%${product_name}%`])
         return rows;
     } catch (err) {
-        return({
-            "message": "error on model",
-            "error": `${err.message}`
-        })
+        throw new Error(err.message)
     }
 }
 
 async function orderByCheck (order_by) {
     try {
         const [rows] = await dbPool.query(`
-        SELECT ? FROM products
-        `, [order_by])
+        SHOW COLUMNS FROM products LIKE ?
+        `, [order_by]);
         return rows;
     } catch (err) {
-        return({
-            "message": "error on model",
-            "error": `${err.message}`
-        })
+        throw new Error(err.message)
     }
 }
 
@@ -88,12 +76,9 @@ async function getAllItem (order_by, arrangement) {
             SELECT * FROM products
             `);
             return rows[0];
-    } catch (err) {
-        return({
-            "message": "error on model",
-            "error": `${err.message}`
-        })
-    }
+        } catch (err) {
+            throw new Error(err.message)
+        }
 }
 
 async function checkSpesificItemName (product_name) {
@@ -103,12 +88,10 @@ async function checkSpesificItemName (product_name) {
         WHERE product_name = ?
         `, [`${product_name}`]
         )
+        console.log(selectItem);
         return selectItem[0];
     } catch (err) {
-        return({
-            "message": "error on model",
-            "error": `${err.message}`
-        })
+        throw new Error(err.message)
     }
 }
 
@@ -122,10 +105,7 @@ async function addItem (product_name, product_category, quantity, update_at, upd
         const sku = insertItem.insertId;
         return getItemBySku(sku);
     } catch (err) {
-        return({
-            "message": "error on model",
-            "error": `${err.message}`
-        })
+        throw new Error(err.message)
     }
 }
 
@@ -136,10 +116,7 @@ async function deleteItem (sku) {
         WHERE sku = ?
         `, [sku]);
     } catch (err) {
-        return({
-            "message": "error on model",
-            "error": `${err.message}`
-        })
+        throw new Error(err.message)
     }
 }
 
@@ -152,10 +129,7 @@ async function updateItemQuantity ( quantity, update_at, update_by, sku) {
         `, [quantity, update_at, update_by, sku]);
         return getItemBySku(sku);
     } catch (err) {
-        return({
-            "message": "error on model",
-            "error": `${err.message}`
-        })
+        throw new Error(err.message)
     }
 }
 
