@@ -1,19 +1,24 @@
 ﻿# Inventory-Management API Project
 
-Welcome to the Inventory Management API project! This API is a comprehensive solution built to streamline the process of managing your product inventory effectively. Developed with Node.js, a powerful server-side JavaScript runtime, and MySQL, a reliable relational database management system, this project offers a reliable and scalable solution.
+Welcome to the Inventory Management API project! This API is a comprehensive solution built to streamline managing your product inventory effectively. Developed with Node.js, a powerful server-side JavaScript runtime, and MySQL, a reliable relational database management system, this project offers a reliable and scalable solution.
 
 ## Table of Contents
 
 1. [Key Features](#key-features)
-2. [Technologies Used](#technologies-used)
-3. [Setup and Installation](#set-up-and-installation)
-4. [API Endpoints](#api-endpoints)
-6. [Usage](#usage)
+2. [Project Instroduction](#project-instroduction)
+3. [Technologies Used](#technologies-used)
+4. [Setup and Installation](#setup-and-installation)
+5. [Entity Relationship Diagram](#entity-relationship-diagram)
+6. [API Endpoints](#api-endpoints)
+7. [Usage](#usage)
 
 ## Key Features:
 - User Management: Register new users, manage user roles, and enable user authentication for secure access.
 - Product Operations: Add new products, update product quantities, delete products, and retrieve product information.
 - Authentication: Implement secure authentication using JSON Web Tokens (JWT) for authorized access to protected endpoints.
+
+## Project Introduction
+This project introduces three user roles: operator, staff, and supervisor, each with different authorizations. Operators can view inventory data, staff can view and modify item quantities, and supervisors can perform a range of actions including modifying item quantities and adding/removing items.
 
 ## Technologies used
 
@@ -29,7 +34,7 @@ Welcome to the Inventory Management API project! This API is a comprehensive sol
 | **Postman**| Tool for testing endpoints.    |
 
 
-## Set up and Installation
+## Setup and Installation
 
 Make sure you have the following installed on your machine:
 
@@ -53,12 +58,25 @@ Make sure you have the following installed on your machine:
         DB_PASS=your-mysql-password
         DB_NAME=your-database-name
 
-6. **Generate JWT keys**
+5. **Set up the MySQL connection**
+   Create a database connection
+     ```bash
+        mysql.createPool({
+            host: process.env.DB_HOST,
+            user: process.env.DB_USER,
+            password: process.env.DB_PASS,
+            database: process.env.DB_NAME,
+        }).promise();
+
+7. **Generate JWT keys**
   Update the .env file with your JWT secret keys:
    ```bash
       OPR_KEY=your-operator-key
       STF_KEY=your-staff-key
       SPV_KEY=your-supervisor-key
+
+## Entity Relationship Diagram
+![ERD of the Database](https://github.com/aliraihann/Inventory-Management/blob/main/ERD%20for%20Inventory%20Management.PNG?raw=true)
 
 ## API Endpoints
 
@@ -86,47 +104,6 @@ Make sure you have the following installed on your machine:
 
 
 ## Usage
-<!--
-**Run the Server**
-Start the server by running:  npm start
-
-The server will be running at http://localhost:your-port.
-
-
-## Usage:
-
-### Run the Server:
-
-To start the server, follow these steps:
-
-1. **Clone the repository:**
-
-   ```bash
-   git clone https://github.com/aliraihann/inventory-management.git
-
-2. **Install Dependencies:**
-
-   ```bash
-    cd inventory-management
-    npm install
-    Set up the MySQL Database:
-
-3. **Create a database and update the connection details in the .env file:**
-
-   ```bash
-    DB_HOST=your-mysql-host
-    DB_USER=your-mysql-username
-    DB_PASS=your-mysql-password
-    DB_NAME=your-database-name
-    Generate JWT Keys:
-
-4. **Update the .env file with your JWT secret keys:**
-
-   ```bash
-    OPR_KEY=your-operator-key
-    STF_KEY=your-staff-key
-    SPV_KEY=your-supervisor-key
--->
 
 ### API Usage
 
