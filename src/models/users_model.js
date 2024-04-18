@@ -2,11 +2,11 @@ import dbPool from "../config/database.js";
 
 async function getUserbyId(employee_id) {
     try {
-        const [rows] = await dbPool.query(`
+        const [data] = await dbPool.query(`
         SELECT * FROM users
         WHERE employee_id = ?
-        `, [employee_id])
-        return rows[0];
+        `, [employee_id]);
+        return data;
     } catch (err) {
         throw new Error(err.message)
     }
@@ -14,11 +14,11 @@ async function getUserbyId(employee_id) {
 
 async function getUserByRole(role) {
     try {
-        const [rows] = await dbPool.query(`
+        const [data] = await dbPool.query(`
         SELECT * FROM users
         WHERE role= ?
         `, [role])
-        return rows;
+        return data;
     } catch (err) {
         throw new Error(err.message)
     }
@@ -26,21 +26,21 @@ async function getUserByRole(role) {
 
 async function getAllUser() {
     try {
-        const [rows] = await dbPool.query(`
+        const [data] = await dbPool.query(`
         SELECT * FROM users
         `)
-        return rows;
+        return data;
     } catch (err) {
         throw new Error(err.message)
     }
 }
 async function getUserByEmail(employee_email) {
     try {
-        const [rows] = await dbPool.query(`
+        const [data] = await dbPool.query(`
         SELECT * FROM users
         WHERE employee_email = ?
         `,[employee_email])
-        return rows;
+        return data;
     } catch (err) {
         throw new Error(err.message)
     }
