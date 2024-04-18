@@ -77,21 +77,19 @@ const userLogin = async (req, res) => {
 const userList = async (req, res) => {
     const { employee_id, role } = req.body;
     try {
+        let selectedUser = await getAllUser();
         if (employee_id) {
-            const selectedUser = await getUserbyId(employee_id);
+            selectedUser = await getUserbyId(employee_id);
             if (typeof selectedUser === "undefined") {
                 throw new Error("Incorrect employee_id. Please insert the correct code");
             }
-            res.status(200).send(selectedUser);
         }
         if (role) {
-            const selectedUser = await getUserByRole(role);
+            selectedUser = await getUserByRole(role);
             if (typeof selectedUser === "undefined") {
                 throw new Error("Incorrect role. Please insert the correct code");
             }
-            res.status(200).send(selectedUser);
         }
-        const selectedUser = await getAllUser();
         res.status(200).json(
             selectedUser.map(data => {
                 return {
