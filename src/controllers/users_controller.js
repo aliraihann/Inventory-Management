@@ -1,6 +1,5 @@
 import bcrypt from 'bcrypt';
 import { hash } from 'bcrypt';
-
 import { 
     getUserbyId, 
     getUserByRole, 
@@ -24,7 +23,7 @@ const userRegister = async (req, res) => {
             throw new Error('Email parameter is not in the correct format');
         }
         const checkEmailAvailibility = await getUserByEmail(employee_email);
-        if (checkEmailAvailibility) {
+        if (checkEmailAvailibility.length > 0) {
             throw new Error('Email has already been used.');
         }
         const newUser = await registerNewUser(employee_name, employee_email, hashPassword, role);

@@ -12,6 +12,6 @@ app.use(json());
 app.use('/users', usersRoutes);
 app.use('/products',productsRoutes)
 
-app.listen(PORT,() => {
+app.listen(PORT || 3000,() => {
     console.log(`App is running on port: ${PORT}`)
 })
