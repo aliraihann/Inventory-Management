@@ -116,6 +116,7 @@ https://railway.app/project/5197003b-4f79-4da3-a0ad-4cdda2fef962/service/08fb184
     Endpoint: /users/register
     Method: POST
     Auth Required: No
+    Role Option: Supervisor, Staff, Operator
     Request Body:
 
     {
@@ -148,6 +149,7 @@ https://railway.app/project/5197003b-4f79-4da3-a0ad-4cdda2fef962/service/08fb184
     Endpoint: /products/add
     Method: POST
     Auth Required: Yes
+    Eligible Role: Supervisor Only
     Request Body:
     {
       "product_name": "New Product",
@@ -160,12 +162,14 @@ https://railway.app/project/5197003b-4f79-4da3-a0ad-4cdda2fef962/service/08fb184
     Endpoint: /products/list
     Method: GET
     Auth Required: Yes
+    Eligible Role: All Role
 
 4. **Get product by SKU:**
       ```bash
     Endpoint: /products/list
     Method: GET
     Auth Required: Yes
+    Eligible Role: All Role
     Request Body:
     {
       "sku": "your-product-sku"
@@ -176,6 +180,7 @@ https://railway.app/project/5197003b-4f79-4da3-a0ad-4cdda2fef962/service/08fb184
     Endpoint: /products/list
     Method: GET
     Auth Required: Yes
+    Eligible Role: All Role
     Request Body:
     {
       "product_name": "Your Product Name"
@@ -186,6 +191,7 @@ https://railway.app/project/5197003b-4f79-4da3-a0ad-4cdda2fef962/service/08fb184
     Endpoint: /products/list
     Method: GET
     Auth Required: Yes
+    Eligible Role: All Role
     Request Body:
     {
       "product_category": "Electronics"
@@ -196,6 +202,7 @@ https://railway.app/project/5197003b-4f79-4da3-a0ad-4cdda2fef962/service/08fb184
     Endpoint: /products/quantity
     Method: PUT
     Auth Required: Yes
+    Eligible Role: Supervisor & Staff Only
     Request Body:
     {
       "sku": "your-product-sku",
@@ -207,6 +214,7 @@ https://railway.app/project/5197003b-4f79-4da3-a0ad-4cdda2fef962/service/08fb184
       Endpoint: /products/delete
       Method: DELETE
       Auth Required: Yes
+      Eligible Role: Supervisor Only
       Request Body:
         {
           "sku": "your-product-sku"
