@@ -52,7 +52,7 @@ const userLogin = async (req, res) => {
         if (!user) {
             throw new Error ("Wrong employee_id")
         }
-        const isValid = await bcrypt.compare(password, user.password);
+        const isValid = await bcrypt.compare(password, user[0].password);
         if (!isValid) {
             throw new Error ("Wrong password")
         }
