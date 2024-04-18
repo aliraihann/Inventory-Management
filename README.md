@@ -116,7 +116,10 @@ https://railway.app/project/5197003b-4f79-4da3-a0ad-4cdda2fef962/service/08fb184
     Endpoint: /users/register
     Method: POST
     Auth Required: No
-    Role Option: Supervisor, Staff, Operator
+    Role Option:
+        - Supervisor
+        - Staff
+        - Operator
     Request Body:
 
     {
@@ -131,6 +134,8 @@ https://railway.app/project/5197003b-4f79-4da3-a0ad-4cdda2fef962/service/08fb184
        Endpoint: /users/list
        Method: GET
        Auth Required: Yes
+      Eligible Role: All Role
+      
 4. **User login:**
       ```bash
     Endpoint: /users/login
