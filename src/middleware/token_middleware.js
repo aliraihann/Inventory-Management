@@ -33,7 +33,7 @@ function updateItemTokenAuthentication (req, res, next) {
         if(err) return res.status(401).send('You are not authorized');
         req.authentication = true;
         let decoded = jwt.decode(headerToken, {complete : true});
-        req.employeeId = decoded.payload.employee_id
+        req.employeeId = decoded.payload.employee_id;
         next();
     })
 }

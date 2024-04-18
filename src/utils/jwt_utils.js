@@ -18,8 +18,8 @@ const generateToken = async function (employee_id) {
         const expiresIn = "3hr";
         const accessToken = jwt.sign(
             {
-            employee_id: user.employee_id, 
-            employee_name: user.employee_name
+            employee_id: user[0].employee_id, 
+            employee_name: user[0].employee_name
             },
             key,
             {expiresIn: expiresIn}
