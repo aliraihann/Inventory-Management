@@ -76,7 +76,7 @@ Make sure you have the following installed on your machine:
       SPV_KEY=your-supervisor-key
 
 ## Entity Relationship Diagram
-![ERD of the Database](https://github.com/aliraihann/Inventory-Management/blob/main/ERD%20for%20Inventory%20Management.PNG?raw=true)
+![ERD of the Database](https://github.com/aliraihann/Inventory-Management-API/blob/b3a7b2afde74139f128780d6fbbfb8a7ab7877b5/ERD%20for%20Inventory%20Management.png)
 
 ## Project Link
 https://railway.app/project/5197003b-4f79-4da3-a0ad-4cdda2fef962/service/08fb184c-acd5-429d-b82a-8a60be077441
