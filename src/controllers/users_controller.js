@@ -112,4 +112,5 @@ const userList = async (req, res) => {
     }
 };
 
+
 export{ userRegister, userList, userLogin };
