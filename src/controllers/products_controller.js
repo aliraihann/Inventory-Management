@@ -52,6 +52,7 @@ const inventory = async (req, res) => {
 const insertItem = async (req, res) => {
     const { product_name, product_category, quantity } = req.body;
     const update_by = req.employeeId;
+    console.log(update_by);
     const update_at = new Date();
     try {
         if (checkSpesificItemName(product_name).length > 0) {

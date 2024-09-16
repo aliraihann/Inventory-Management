@@ -53,7 +53,7 @@ async function registerNewUser(employee_name, employee_email, hashPassword, role
         VALUE (?,?,?,?)
         `,[employee_name, employee_email, hashPassword, role]);
         const id = insertUser.insertId;
-        return getUserbyId(id);
+        return await getUserbyId(id);
     } catch (err) {
         throw new Error(err.message)
     }
